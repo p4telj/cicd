@@ -19,6 +19,6 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-c
     chmod 755 /usr/local/bin/docker-compose
 RUN usermod -a -G sudo jenkins; \
     echo "jenkins ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
-COPY ./jenkins.sh /opt/jenkins.sh
+COPY ./start.sh /opt/start.sh
 USER jenkins
-ENTRYPOINT ["/bin/bash", "/opt/jenkins.sh"]
+ENTRYPOINT ["/bin/bash", "/opt/start.sh"]
