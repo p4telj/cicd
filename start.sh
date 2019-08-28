@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [ "$(uname -m)" =~ "x64" ];
+if [[ "$(uname -m)" =~ "x86" ]];
 then
-    sudo docker-compose up jenkins-x64
-elif [ "$(uname -m)" =~ "armv7" ];
+    docker-compose up jenkins-x64
+elif [[ "$(uname -m)" =~ "armv7" ]];
 then
     sudo docker-compose up jenkins-arm32
 else
