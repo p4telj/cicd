@@ -1,0 +1,37 @@
+version: '3'
+services:  
+  jenkins-x64: &jenkins
+    image: jenkins:x64
+    container_name: jenkins-container
+    hostname: jenkins-container
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile-x64
+    ports:
+      - "9999:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker:/usr/bin/docker
+    environment:
+      - "JENKINS_USER=501"
+  jenkins-arm32:
+    <<: *jenkins
+    image: jenkins:arm32
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile-arm32
+  # gitlab:
+  #   image: gitlab:cicd
+  #   container_name: gitlab-container
+  #   hostname: gitlab-container
+  #   build: 
+  #     context: ../gitlab
+  #     dockerfile: 
+  #   ports:
+  #     - "9998:80"
+  #   volumes:
+  #     - ../gitlab/config:/etc/gitlab
+  #     - ../gitlab/logs:/var/log/gitlab
+  #     - ../gitlab/data:/var/opt/gitlab
