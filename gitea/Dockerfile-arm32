@@ -1,4 +1,4 @@
-FROM arm32v6/alpine:latest
+FROM arm32v7/alpine:latest
 
 ENV USER git
 ENV GITEA_CUSTOM /data/gitea
