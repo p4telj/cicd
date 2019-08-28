@@ -23,21 +23,6 @@ services:
     build:
       context: ./jenkins
       dockerfile: Dockerfile-arm32
-  mysql-x64: &mysql
-    image: p4telj/mysql:x64
-    container_name: mysql-container
-    hostname: mysql-container
-    restart: always
-    build:
-      context: ./mysql
-      dockerfile: Dockerfile-x64
-    volumes:
-      - ./mysql/data:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=gitea
-      - MYSQL_USER=gitea
-      - MYSQL_PASSWORD=password
   gitea-x64: &gitea
     image: gitea/gitea:latest
     container_name: gitea-container
