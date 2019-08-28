@@ -1,0 +1,24 @@
+FROM "jenkins/jenkins"
+
+LABEL maintainer="pateljim@umich.edu"
+
+USER root
+RUN apt-get update; \
+    apt-get -y install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        gnupg2 \
+        software-properties-common \
+        awscli \
+        sudo \
+        vim
+
+# RUN curl https://get.docker.com/builds/Linux/x86_64/docker-latest.tgz | tar xvz -C /tmp/ && mv /tmp/docker/docker /usr/bin/docker
+RUN curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose; \
+    chmod 755 /usr/local/bin/docker-compose
+RUN usermod -a -G sudo jenkins; \
+    echo "jenkins ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers
+COPY ./jenkins.sh /opt/jenkins.sh
+USER jenkins
+ENTRYPOINT ["/bin/bash", "/opt/jenkins.sh"]
