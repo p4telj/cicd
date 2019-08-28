@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo chown 1000 jenkins/jenkins_home
 if [[ "$(uname -m)" =~ "x86" ]];
 then
     docker-compose $1 up jenkins-x64
