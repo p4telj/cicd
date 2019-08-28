@@ -1,7 +1,7 @@
 version: '3'
 services:  
   jenkins-x64: &jenkins
-    image: jenkins:x64
+    image: p4telj/jenkins:x64
     container_name: jenkins-container
     hostname: jenkins-container
     build:
@@ -18,7 +18,7 @@ services:
       - "JENKINS_USER=501"
   jenkins-arm32:
     <<: *jenkins
-    image: jenkins:arm32
+    image: p4telj/jenkins:arm32
     build:
       context: ./jenkins
       dockerfile: Dockerfile-arm32
