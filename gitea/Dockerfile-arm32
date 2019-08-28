@@ -31,7 +31,7 @@ RUN apk update && \
     git && \
   echo "git:$(date +%s | sha256sum | base64 | head -c 32)" | chpasswd
 
-COPY docker /
+COPY docker/root /
 RUN mkdir -p /app/gitea && \
     wget -O /app/gitea/gitea https://dl.gitea.io/gitea/1.9.2/gitea-1.9.2-linux-arm-6 && \
     chmod +x /app/gitea/gitea
