@@ -1,0 +1,10 @@
+# Jenkins
+jenkins_home/
+
+# GitLab
+config/
+data/
+logs/
+
+# MacOS
+.DS_Store
