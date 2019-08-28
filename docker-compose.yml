@@ -47,7 +47,7 @@ services:
       - ./gitea/data:/data
     ports:
       - "9998:3000"
-      - "22:22"
+      - "9997:22"
   gitea-arm32:
     <<: *gitea
     image: p4telj/gitea:arm32
