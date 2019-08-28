@@ -38,12 +38,6 @@ services:
       - MYSQL_DATABASE=gitea
       - MYSQL_USER=gitea
       - MYSQL_PASSWORD=password
-  mysql-arm32:
-    <<: *mysql
-    image: p4telj/mysql:arm32
-    build:
-      context: ./mysql
-      dockerfile: Dockerfile-arm32
   gitea-x64: &gitea
     image: gitea/gitea:latest
     container_name: gitea-container
@@ -54,13 +48,9 @@ services:
     ports:
       - "9998:3000"
       - "22:22"
-    depends_on:
-      - mysql-x64
   gitea-arm32:
     <<: *gitea
     image: p4telj/gitea:arm32
     build:
       context: ./gitea
       dockerfile: Dockerfile-arm32
-    depends_on:
-      - mysql-arm32
