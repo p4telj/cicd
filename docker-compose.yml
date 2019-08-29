@@ -31,7 +31,7 @@ services:
     volumes:
       - ./gitea/data:/data
     ports:
-      - "9998:3000"
+      - "9998:9998"
       - "9997:22"
   gitea-arm32:
     <<: *gitea
