@@ -1,0 +1,4 @@
+FROM gitea/gitea:latest
+
+LABEL Maintainer=pateljim@umich.edu
+

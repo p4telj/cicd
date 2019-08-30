@@ -24,10 +24,13 @@ services:
       context: ./jenkins
       dockerfile: Dockerfile-arm32
   gitea-x64: &gitea
-    image: gitea/gitea:latest
+    image: p4telj/gitea:x64
     container_name: gitea-container
     hostname: gitea-container
     restart: always
+    build:
+      context: ./gitea
+      dockerfile: Dockerfile-x64
     volumes:
       - ./gitea/data:/data
     ports:
